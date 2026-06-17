@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Taro - Simulador{% endblock %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'simulador/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <!-- HERO -->
+    <section class="hero" data-bg-image="{% static 'simulador/img/Audi_header.png' %}">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Tu camino empieza<br>AHORA</h1>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 1: ELEGÍ TU MODELO -->
+    <section class="seccion modelos">
+        <h2 class="seccion-titulo"><span>1. Elige tu modelo</span></h2>
+        <div class="modelos-grid">
+
+            <div class="modelo-card">
+                <img src="{% static 'simulador/img/VW_Gol.jpg' %}" alt="Gol Trend">
+                <h3>Volkswagen Gol Trend</h3>
+                <p>Desde <strong>$10.000.000</strong></p>
+                <button class="btn-seleccionar">Seleccionar</button>
+            </div>
+
+            <div class="modelo-card seleccionado">
+                <img src="{% static 'simulador/img/Chevrolet_Tracker.jpg' %}" alt="Chevrolet Tracker">
+                <h3>Chevrolet Tracker</h3>
+                <p>Desde <strong>$30.000.000</strong></p>
+                <button class="btn-seleccionar activo">Seleccionado</button>
+            </div>
+
+            <div class="modelo-card">
+                <img src="{% static 'simulador/img/Toyota_CorollaCross.jpg' %}" alt="Toyota Corolla Cross">
+                <h3>Toyota Corolla Cross</h3>
+                <p>Desde <strong>$50.000.000</strong></p>
+                <button class="btn-seleccionar">Seleccionar</button>
+            </div>
+
+            <div class="modelo-card">
+                <img src="{% static 'simulador/img/Audi_A6.jpg' %}" alt="Audi A6">
+                <h3>Audi A6</h3>
+                <p>Desde <strong>$100.000.000</strong></p>
+                <button class="btn-seleccionar">Seleccionar</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: REQUISITOS -->
+    <section class="seccion requisitos">
+        <h2 class="seccion-titulo"><span>2. Verifica los requisitos</span></h2>
+        <div class="requisitos-box">
+            <div class="requisitos-col">
+                <h4>Requisitos del Titular para calificar:</h4>
+                <ul>
+                    <li>Tener, como mínimo, 18 años</li>
+                    <li>Tener, como máximo, 75 años al finalizar el plan</li>
+                    <li>Presentar un garante</li>
+                </ul>
+            </div>
+            <div class="requisitos-col">
+                <h4>Requisitos del Garante:</h4>
+                <ul>
+                    <li>Tener, como mínimo, 18 años</li>
+                    <li>Tener una antigüedad laboral mínima de 1 año para trabajadores en relación de dependencia y 2 años para trabajadores independientes</li>
+                    <li>Tener un ingreso neto mayor a 4 veces el valor de la cuota</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: FORMULARIO + INFORME -->
+    <section class="seccion financiamiento">
+        <h2 class="seccion-titulo"><span>3. Define tu financiamiento</span></h2>
+        <div class="financiamiento-contenido">
+            
+            <!-- FORMULARIO -->
+            <div class="formulario-container">
+                <div class="tabs">
+                    <button type="button" class="tab activo" onclick="mostrarTab(event,'tab-personal')">Datos personales</button>
+                    <button type="button" class="tab" onclick="mostrarTab(event,'tab-garante')">Datos del garante</button>
+                    <button type="button" class="tab" onclick="mostrarTab(event,'tab-plan')">Datos del plan</button>
+                </div>
+
+                <form id="form-simulador" method="post" action="" novalidate>
+                    {% csrf_token %}
+
+                    <div id="tab-personal" class="contenido-pestana">
+                        <p class="form-subtitulo">Completa el formulario</p>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Nombre</label>
+                                {{ form.nombre_titular }}
+                                <small class="error-msg" data-field="nombre_titular"></small>
+                            </div>
+                            <div class="form-field">
+                                <label>Apellido</label>
+                                {{ form.apellido_titular }}
+                                <small class="error-msg" data-field="apellido_titular"></small>
+                            </div>
+                        </div>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>DNI</label>
+                                {{ form.dni_titular }}
+                                <small class="error-msg" data-field="dni_titular"></small>
+                            </div>
+                            <div class="form-field">
+                                <label>Fecha de nacimiento</label>
+                                {{ form.fecha_nac_titular }}
+                                <small class="error-msg" data-field="fecha_nac_titular"></small>
+                            </div>
+                        </div>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Correo Electrónico</label>
+                                {{ form.email_titular }}
+                                <small class="error-msg" data-field="email_titular"></small>
+                            </div>
+                            <div class="form-field">
+                                <label>Teléfono</label>
+                                {{ form.tel_titular }}
+                                <small class="error-msg" data-field="tel_titular"></small>
+                            </div>
+                        </div>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Ingreso Neto Mensual</label>
+                                {{ form.ingreso_titular }}
+                                <small class="error-msg" data-field="ingreso_titular"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-garante" class="contenido-pestana oculto" style="display: none;">
+                        <p class="form-subtitulo">Datos del garante</p>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Nombre</label>
+                                {{ form.nombre_garante }}
+                                <small class="error-msg" data-field="nombre_garante"></small>
+                            </div>
+                            <div class="form-field">
+                                <label>Apellido</label>
+                                {{ form.apellido_garante }}
+                                <small class="error-msg" data-field="apellido_garante"></small>
+                            </div>
+                        </div>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>DNI</label>
+                                {{ form.dni_garante }}
+                                <small class="error-msg" data-field="dni_garante"></small>
+                            </div>
+                            <div class="form-field">
+                                <label>Fecha de nacimiento</label>
+                                {{ form.fecha_nac_garante }}
+                                <small class="error-msg" data-field="fecha_nac_garante"></small>
+                            </div>
+                        </div>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Condición Laboral</label>
+                                {{ form.condicion_laboral_garante }}
+                                <small class="error-msg" data-field="condicion_laboral_garante"></small>
+                            </div>
+                            <div class="form-field">
+                                <label>Antigüedad Laboral</label>
+                                {{ form.antiguedad_laboral_garante }}
+                                <small class="error-msg" data-field="antiguedad_laboral_garante"></small>
+                            </div>
+                        </div>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Ingreso Neto Mensual</label>
+                                {{ form.ingreso_garante }}
+                                <small class="error-msg" data-field="ingreso_garante"></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-plan" class="contenido-pestana" style="display: none;">
+                        <p class="form-subtitulo">Datos del plan</p>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Modelo</label>
+                                {{ form.modelo_auto }}
+                                <small class="error-msg" data-field="modelo_auto"></small>
+                            </div>
+                            <div class="form-field">
+                                <label>Plan</label>
+                                {{ form.tipo_plan }}
+                                <small class="error-msg" data-field="tipo_plan"></small>
+                            </div>
+                        </div>
+                        <div class="form-grupo">
+                            <div class="form-field">
+                                <label>Cantidad de cuotas</label>
+                                {{ form.cantidad_cuotas }}
+                                <small class="error-msg" data-field="cantidad_cuotas"></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions" style="margin-top: 20px; text-align: center;">
+                        <button type="submit" class="btn-simular" id="btn-submit" disabled>Simular plan</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- INFORME -->
+            <div class="informe-container">
+                <h3>Informe de financiamiento</h3>
+                <div class="informe-vehiculo">
+                    <div>
+                        <p class="informe-label">Vehículo Escogido</p>
+                        <p class="informe-modelo">Chevrolet Tracker</p>
+                        <p>$30.000.000</p>
+                    </div>
+                    <img src="{% static 'simulador/img/Chevrolet_Tracker.jpg' %}" alt="Chevrolet Tracker">
+                </div>
+                <div class="informe-fila">
+                    <span>Financiamiento</span>
+                    <span>Plan 70/30</span>
+                </div>
+                <div class="informe-fila">
+                    <span>Cantidad de Cuotas</span>
+                    <span>84</span>
+                </div>
+                <div class="informe-fila">
+                    <span>Importe para la Adjudicación</span>
+                    <span>$9.000.000</span>
+                </div>
+                <div class="informe-fila">
+                    <span>Importe para el Retiro<br><small>(Gastos de patentamiento)</small></span>
+                    <span>$1.500.000</span>
+                </div>
+                <div class="informe-fila">
+                    <span>Tasa de Interés</span>
+                    <span>14,50%</span>
+                </div>
+                <div class="informe-fila destacado">
+                    <span>Valor Final de la Cuota Mensual</span>
+                    <span class="informe-total">$1.200.000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,402 @@
+/* HERO */
+.hero {
+    position: relative;
+    height: 100vh;
+    background-color: var(--azul);
+    background-position: center 45%;
+    background-repeat: no-repeat;
+    background-size: 55%; 
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(21, 20, 36, 0) 60%, var(--azul) 100%);
+    z-index: 1;
+}
+
+.hero-text {
+    text-align: center;
+    color: white;
+    padding-bottom: 4rem;
+    z-index: 2;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 6px;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+/* SECCIONES GENERALES */
+.seccion {
+    padding: 4rem 3rem;
+}
+
+.seccion-titulo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: var(--azul);
+}
+
+.seccion-titulo::before,
+.seccion-titulo::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+}
+
+/* MODELOS */
+.modelos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.modelo-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.modelo-card.seleccionado {
+    border-color: var(--bordo);
+    border-width: 2px;
+}
+
+.modelo-card img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+}
+
+.modelo-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.modelo-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+}
+
+.btn-seleccionar {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 0.85rem;
+}
+
+.btn-seleccionar.activo {
+    border-color: var(--bordo);
+    color: var(--bordo);
+    font-weight: 600;
+}
+
+/* REQUISITOS */
+.requisitos-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.requisitos-col h4 {
+    color: var(--bordo);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.requisitos-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.requisitos-col ul li::before {
+    content: '✓ ';
+    color: var(--bordo);
+    font-weight: 700;
+}
+
+.requisitos-col ul li {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* FINANCIAMIENTO */
+.financiamiento-contenido {
+    display: grid;
+    grid-template-columns: minmax(auto, 600px); 
+    justify-content: center;
+    gap: 2rem;
+    align-items: start;
+    transition: all 0.4s ease-in-out;
+}
+.financiamiento-contenido.con-informe {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* TABS */
+
+#tab-garante .form-grupo {
+    flex-wrap: wrap;
+}
+
+#tab-garante .form-field {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.tab {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+    background: white;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.tab.activo {
+    background: white;
+    color: var(--azul);
+    font-weight: 600;
+}
+
+/* FORMULARIO */
+.form-subtitulo {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.form-grupo {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.3rem;
+}
+
+.form-field label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.form-field input,
+.form-field select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font);
+    font-size: 0.9rem;
+}
+
+.btn-simular {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2.5rem;
+    background-color: var(--bordo);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* INFORME */
+.informe-container {
+    display: none; /* Oculto inicialmente */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: #fafafa;
+    animation: deslizarAparecer 0.6s ease-out forwards;
+}
+
+/* Se muestra cuando el contenedor padre recibe la clase 'con-informe' */
+.financiamiento-contenido.con-informe .informe-container {
+    display: block;
+}
+
+@keyframes deslizarAparecer {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.informe-container h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--azul);
+}
+
+.informe-vehiculo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.informe-vehiculo img {
+    width: 100px;
+    object-fit: contain;
+}
+
+.informe-vehiculo > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.informe-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.informe-modelo {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.informe-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+}
+
+.informe-fila.destacado {
+    border-bottom: none;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.informe-total {
+    color: var(--bordo);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    /* --- 1. AJUSTE DE LA PORTADA (HERO) --- */
+    .hero {
+        /* Aumentamos el tamaño del background para que ocupe casi todo el ancho del celular */
+        background-size: 95%; 
+        background-position: center 30%; 
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+
+    /* --- 2. AJUSTE DE MODELOS A 1 COLUMNA --- */
+    .modelos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- 3. RESTO DE SECCIONES --- */
+    .requisitos-box {
+        grid-template-columns: 1fr;
+    }
+
+    .financiamiento-contenido,
+    .financiamiento-contenido.con-informe {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-container,
+    .informe-container {
+        padding: 1.5rem 1rem;
+        width: 100%;
+        overflow: hidden; 
+    }
+
+    .informe-fila {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+        padding: 0.8rem 0;
+    }
+    
+    .informe-fila span:last-child {
+        font-weight: 600;
+        color: var(--azul);
+    }
+
+    .form-grupo {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .seccion {
+        padding: 3rem 1.5rem;
+    }
+
+    .tabs {
+        flex-wrap: wrap;
+    }
+    .tab {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 0.6rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    #tab-garante .form-field {
+        flex: 1 1 100%;
+    }
+}
