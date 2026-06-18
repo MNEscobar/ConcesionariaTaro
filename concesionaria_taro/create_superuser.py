@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 # 2. Definir las credenciales de tu administrador
 USERNAME = 'admin'
 EMAIL = 'admin@taro.com'
-PASSWORD = 'Matias2026/' # Usa la contraseña que prefieras
+PASSWORD = 'Matias2026/'
 
 # 3. Lógica para crearlo solo si no existe (así no da error en futuros despliegues)
 if not User.objects.filter(username=USERNAME).exists():
