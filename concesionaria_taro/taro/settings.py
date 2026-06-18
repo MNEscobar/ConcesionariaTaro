@@ -113,6 +113,6 @@ EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
 
 # Las credenciales las pasamos a variables de entorno para no publicarlas en GitHub.
-# (Mantengo tus valores como 'default' por si pruebas localmente, pero en producción las ocultaremos)
+# (Mantengo tus valores como 'default' para local, pero en producción las ocultaremos)
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER', 'mescobar@proyectoweb.website')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS', 'Matias2026/')
