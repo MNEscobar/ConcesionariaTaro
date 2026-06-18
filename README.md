@@ -16,5 +16,5 @@ El proyecto fue desplegado exitosamente utilizando Render y PostgreSQL.
 ## 🔐 Acceso al Panel de Administración
 Para revisar el gestor de solicitudes internas (Django Admin), utiliza las siguientes credenciales:
 - **URL del Panel:** [https://concesionariataro.onrender.com/admin](https://concesionariataro.onrender.com/admin)
-- **Usuario:** admin@taro.com
+- **Usuario:** admin
 - **Contraseña:** Matias2026/
